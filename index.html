@@ -106,6 +106,17 @@
       background: radial-gradient(circle, #ffffff 10%, transparent 70%);
       transform: rotate(-15deg);
     }
+    /* Animação Suave dos Cards na Regra de Ouro ao Rolar a Página */
+    .scroll-reveal-card {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease, background-color 0.3s ease;
+      will-change: opacity, transform;
+    }
+    .scroll-reveal-card.revealed {
+      opacity: 1;
+      transform: translateY(0);
+    }
   </style>
 </head>
 <body class="bg-white text-[#1D293D] font-sans antialiased overflow-x-hidden selection:bg-[#D10029] selection:text-white">
@@ -171,97 +182,91 @@
   <main id="b2c-view" class="view-transition view-visible">
     
     <!-- 1. B2C HERO SECTION COM IMG APP VRUM SEM FUNDO.png E COR EXATA #D10029 -->
-    <section class="relative pt-28 sm:pt-36 pb-16 sm:pb-24 overflow-hidden bg-gradient-to-b from-[#D10029] via-[#D10029] to-[#BC0025] text-white">
+    <section class="relative pt-28 sm:pt-36 pb-20 sm:pb-28 overflow-hidden bg-gradient-to-b from-[#D10029] via-[#D10029] to-[#BC0025] text-white">
       
       <!-- Marca d'água sutil -->
       <div class="watermark-v"></div>
 
       <!-- Ambient Glow Suave -->
-      <div class="absolute inset-0 pointer-events-none opacity-30">
-        <div class="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[650px] h-[650px] bg-white/20 rounded-full blur-[140px] animate-glow-pulse"></div>
+      <div class="absolute inset-0 pointer-events-none opacity-35">
+        <div class="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[750px] h-[750px] bg-white/20 rounded-full blur-[150px] animate-glow-pulse"></div>
       </div>
 
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-          
-          <!-- Coluna de Texto Hero B2C -->
-          <div class="lg:col-span-6 space-y-6 sm:space-y-7 text-center lg:text-left">
-            
-            <!-- Eyebrow Limpo (Sem Box) -->
-            <span class="text-xs font-extrabold uppercase tracking-widest text-red-100 block mb-2">
-              PRONTUÁRIO DIGITAL AUTOMOTIVO
-            </span>
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+        
+        <!-- 1. Texto do Hero B2C -->
+        <div class="max-w-3xl mx-auto space-y-4 sm:space-y-6">
+          <span class="text-xs font-extrabold uppercase tracking-widest text-red-100 block">
+            PRONTUÁRIO DIGITAL AUTOMOTIVO
+          </span>
 
-            <!-- H1 Oficial com o Logo Oficial VRUM Embutido no Título -->
-            <h1 class="font-display font-black text-4xl sm:text-6xl lg:text-7xl leading-[1.06] tracking-tight text-white drop-shadow-md">
-              Dê um 
-              <img 
-                src="VRUM LOGO LETRA.png" 
-                alt="VRUM" 
-                class="inline-block h-8 sm:h-12 lg:h-14 w-auto -mt-2 mx-1 object-contain drop-shadow-md"
-              > 
-              no seu veículo.
-            </h1>
+          <h1 class="font-display font-black text-4xl sm:text-6xl lg:text-7xl leading-[1.06] tracking-tight text-white drop-shadow-md">
+            Dê um 
+            <img 
+              src="VRUM LOGO LETRA.png" 
+              alt="VRUM" 
+              class="inline-block h-8 sm:h-12 lg:h-14 w-auto -mt-2 mx-1 object-contain drop-shadow-md"
+            > 
+            no seu veículo.
+          </h1>
 
-            <!-- Subtítulo Oficial -->
-            <p class="text-lg sm:text-2xl text-red-100 font-normal leading-relaxed max-w-xl mx-auto lg:mx-0">
-              O histórico completo do seu carro na palma da mão. Prove que você cuida e garanta o melhor valor na revenda.
-            </p>
-
-            <!-- Ações: Botão Baixar App Grátis -->
-            <div class="pt-2 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
-              <a 
-                href="#download-area" 
-                class="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 rounded-full bg-white text-[#D10029] hover:bg-slate-100 font-black text-base tracking-wide transition-all duration-300 shadow-[0_15px_35px_rgba(0,0,0,0.25)] hover:-translate-y-1 hover:shadow-[0_20px_45px_rgba(0,0,0,0.35)]"
-              >
-                <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
-                <span>Baixar App Grátis</span>
-              </a>
-
-              <a 
-                href="#video-b2c" 
-                class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-4 rounded-full bg-white/10 hover:bg-white/20 border border-white/25 text-white font-bold text-sm backdrop-blur-md transition-all duration-200"
-              >
-                <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                <span>Ver Demonstração</span>
-              </a>
-            </div>
-
-            <!-- Micro-provas de Credibilidade -->
-            <div class="pt-2 flex flex-wrap items-center justify-center lg:justify-start gap-5 text-xs text-red-100 font-medium">
-              <span class="flex items-center gap-1.5">
-                <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
-                100% Gratuito para Motoristas
-              </span>
-              <span class="flex items-center gap-1.5">
-                <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
-                Sem Mensalidade
-              </span>
-              <span class="flex items-center gap-1.5">
-                <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
-                Auditado por Oficinas
-              </span>
-            </div>
-
-          </div>
-
-          <!-- Coluna Visual: Imagem SEM FUNDO (IMG APP VRUM SEM FUNDO.png) Flutuando -->
-          <div class="lg:col-span-6 flex justify-center items-center relative mt-6 lg:mt-0">
-            <div class="relative w-full max-w-[460px] sm:max-w-[540px] lg:max-w-none flex justify-center">
-              
-              <!-- Glow Suave atrás do Mockup -->
-              <div class="absolute inset-0 bg-white/20 rounded-full blur-3xl transform scale-90 pointer-events-none"></div>
-
-              <!-- Mockup Transparente 3D Oficial -->
-              <img 
-                src="IMG APP VRUM SEM FUNDO.png" 
-                alt="VRUM App no Smartphone - Garagem Virtual e Histórico" 
-                class="relative z-10 max-h-[380px] sm:max-h-[520px] lg:max-h-[640px] w-auto object-contain animate-float-slow drop-shadow-[0_25px_50px_rgba(0,0,0,0.4)] transition-transform duration-500 hover:scale-[1.02]"
-              >
-            </div>
-          </div>
-
+          <p class="text-lg sm:text-2xl text-red-100 font-normal leading-relaxed max-w-2xl mx-auto">
+            O histórico completo do seu carro na palma da mão. Prove que você cuida e garanta o melhor valor na revenda.
+          </p>
         </div>
+
+        <!-- 2. Imagem Mockup 3D Abaixo do Texto -->
+        <div class="flex justify-center items-center relative my-8 sm:my-10">
+          <div class="relative w-full max-w-[360px] sm:max-w-[480px] lg:max-w-[560px] flex justify-center">
+            <!-- Glow suave atrás do Mockup -->
+            <div class="absolute inset-0 bg-white/25 rounded-full blur-3xl transform scale-90 pointer-events-none animate-pulse"></div>
+
+            <!-- Mockup Transparente 3D Oficial -->
+            <img 
+              src="IMG APP VRUM SEM FUNDO.png" 
+              alt="VRUM App no Smartphone - Garagem Virtual e Histórico" 
+              class="relative z-10 max-h-[380px] sm:max-h-[500px] lg:max-h-[580px] w-auto object-contain animate-float-slow drop-shadow-[0_25px_50px_rgba(0,0,0,0.4)] transition-transform duration-500 hover:scale-[1.02]"
+            >
+          </div>
+        </div>
+
+        <!-- 3. Botões e Micro-provas Embaixo da Imagem -->
+        <div class="max-w-xl mx-auto space-y-6">
+          <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <a 
+              href="#download-area" 
+              class="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 rounded-full bg-white text-[#D10029] hover:bg-slate-100 font-black text-base tracking-wide transition-all duration-300 shadow-[0_15px_35px_rgba(0,0,0,0.25)] hover:-translate-y-1 hover:shadow-[0_20px_45px_rgba(0,0,0,0.35)]"
+            >
+              <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+              <span>Baixar App Grátis</span>
+            </a>
+
+            <a 
+              href="#video-b2c" 
+              class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-4 rounded-full bg-white/10 hover:bg-white/20 border border-white/25 text-white font-bold text-sm backdrop-blur-md transition-all duration-200"
+            >
+              <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+              <span>Ver Demonstração</span>
+            </a>
+          </div>
+
+          <!-- Micro-provas de Credibilidade -->
+          <div class="flex flex-wrap items-center justify-center gap-4 sm:gap-6 text-xs text-red-100 font-medium">
+            <span class="flex items-center gap-1.5">
+              <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+              100% Gratuito para Motoristas
+            </span>
+            <span class="flex items-center gap-1.5">
+              <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+              Sem Mensalidade
+            </span>
+            <span class="flex items-center gap-1.5">
+              <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+              Auditado por Oficinas
+            </span>
+          </div>
+        </div>
+
       </div>
     </section>
 
@@ -694,17 +699,29 @@
 
 
     <!-- 5. A REGRA DE OURO -->
-    <section class="py-24 sm:py-36 bg-[#0B101D] text-white relative overflow-hidden">
+    <section class="py-24 sm:py-36 bg-[#0B101D] text-white relative overflow-hidden" id="regra-de-ouro">
       <!-- Ambient Glow Red -->
-      <div class="absolute inset-0 pointer-events-none opacity-20">
+      <div class="absolute inset-0 pointer-events-none opacity-25">
         <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[#D10029] rounded-full blur-[180px]"></div>
       </div>
 
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
+        <!-- SELO OFICIAL VRUM (SELO VRUM.png) ANTES DA REGRA DE OURO -->
+        <div class="flex flex-col items-center justify-center mb-12 sm:mb-16 text-center">
+          <div class="relative group">
+            <div class="absolute inset-0 bg-[#D10029]/30 rounded-full blur-3xl transform scale-75 animate-pulse pointer-events-none"></div>
+            <img 
+              src="SELO VRUM.png" 
+              alt="Selo Oficial de Procedência VRUM" 
+              class="relative z-10 max-h-[160px] sm:max-h-[220px] md:max-h-[260px] w-auto object-contain drop-shadow-[0_20px_45px_rgba(209,0,41,0.5)] transition-transform duration-500 hover:scale-105"
+            >
+          </div>
+        </div>
+
         <div class="text-center max-w-3xl mx-auto mb-16 sm:mb-20 space-y-4">
           <span class="text-xs font-extrabold uppercase tracking-widest text-[#FF6274] block mb-2">
-            PRINCÍPIO INE GOCIÁVEL
+            PRINCÍPIO INEGOCIÁVEL
           </span>
           <h2 class="font-display font-black text-3xl sm:text-5xl lg:text-6xl tracking-tight text-white leading-tight">
             A Regra de Ouro
@@ -717,43 +734,39 @@
           </p>
         </div>
 
-        <!-- 4 Ícones com Cards Glass -->
+        <!-- 4 Cards Glass com Animação Scroll-Reveal (Sem Emojis, Apenas Texto) -->
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
           
-          <div class="bg-white/[0.04] border border-white/10 rounded-3xl p-8 backdrop-blur-xl hover:bg-white/[0.08] hover:border-red-500/40 transition-all duration-300 group hover:-translate-y-1.5 shadow-xl">
-            <div class="w-14 h-14 rounded-2xl bg-red-600/20 text-[#FF6274] border border-red-500/30 flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform">
-              📸
-            </div>
+          <!-- Card 1: Foto do Serviço -->
+          <div class="scroll-reveal-card bg-white/[0.04] border border-white/10 rounded-3xl p-8 backdrop-blur-xl hover:bg-white/[0.08] hover:border-red-500/40 transition-all duration-300 group hover:-translate-y-1.5 shadow-xl flex flex-col justify-start">
+            <div class="w-8 h-1 rounded-full bg-[#D10029] mb-6 group-hover:w-14 transition-all duration-300"></div>
             <h3 class="font-display font-bold text-xl text-white mb-2">Foto do Serviço</h3>
             <p class="text-slate-400 text-sm leading-relaxed">
               Registro fotográfico da peça substituída, da nova peça instalada e do automóvel em atendimento.
             </p>
           </div>
 
-          <div class="bg-white/[0.04] border border-white/10 rounded-3xl p-8 backdrop-blur-xl hover:bg-white/[0.08] hover:border-red-500/40 transition-all duration-300 group hover:-translate-y-1.5 shadow-xl">
-            <div class="w-14 h-14 rounded-2xl bg-red-600/20 text-[#FF6274] border border-red-500/30 flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform">
-              📄
-            </div>
+          <!-- Card 2: Nota Fiscal -->
+          <div class="scroll-reveal-card bg-white/[0.04] border border-white/10 rounded-3xl p-8 backdrop-blur-xl hover:bg-white/[0.08] hover:border-red-500/40 transition-all duration-300 group hover:-translate-y-1.5 shadow-xl flex flex-col justify-start">
+            <div class="w-8 h-1 rounded-full bg-[#D10029] mb-6 group-hover:w-14 transition-all duration-300"></div>
             <h3 class="font-display font-bold text-xl text-white mb-2">Nota Fiscal</h3>
             <p class="text-slate-400 text-sm leading-relaxed">
               Comprovante fiscal emitido pela mecânica responsável, atestando procedência e garantia legal.
             </p>
           </div>
 
-          <div class="bg-white/[0.04] border border-white/10 rounded-3xl p-8 backdrop-blur-xl hover:bg-white/[0.08] hover:border-red-500/40 transition-all duration-300 group hover:-translate-y-1.5 shadow-xl">
-            <div class="w-14 h-14 rounded-2xl bg-red-600/20 text-[#FF6274] border border-red-500/30 flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform">
-              📍
-            </div>
+          <!-- Card 3: Local & CNPJ -->
+          <div class="scroll-reveal-card bg-white/[0.04] border border-white/10 rounded-3xl p-8 backdrop-blur-xl hover:bg-white/[0.08] hover:border-red-500/40 transition-all duration-300 group hover:-translate-y-1.5 shadow-xl flex flex-col justify-start">
+            <div class="w-8 h-1 rounded-full bg-[#D10029] mb-6 group-hover:w-14 transition-all duration-300"></div>
             <h3 class="font-display font-bold text-xl text-white mb-2">Local & CNPJ</h3>
             <p class="text-slate-400 text-sm leading-relaxed">
               Oficina física devidamente cadastrada, auditada e com carimbo digital emitido na O.S.
             </p>
           </div>
 
-          <div class="bg-white/[0.04] border border-white/10 rounded-3xl p-8 backdrop-blur-xl hover:bg-white/[0.08] hover:border-red-500/40 transition-all duration-300 group hover:-translate-y-1.5 shadow-xl">
-            <div class="w-14 h-14 rounded-2xl bg-red-600/20 text-[#FF6274] border border-red-500/30 flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform">
-              ⏱️
-            </div>
+          <!-- Card 4: Data e KM Real -->
+          <div class="scroll-reveal-card bg-white/[0.04] border border-white/10 rounded-3xl p-8 backdrop-blur-xl hover:bg-white/[0.08] hover:border-red-500/40 transition-all duration-300 group hover:-translate-y-1.5 shadow-xl flex flex-col justify-start">
+            <div class="w-8 h-1 rounded-full bg-[#D10029] mb-6 group-hover:w-14 transition-all duration-300"></div>
             <h3 class="font-display font-bold text-xl text-white mb-2">Data e KM Real</h3>
             <p class="text-slate-400 text-sm leading-relaxed">
               Trava cronológica imutável que registra o hodômetro no momento exato do serviço, eliminando fraudes.
@@ -773,93 +786,90 @@
        ===================================================================== -->
   <main id="b2b-view" class="view-transition view-hidden">
     
-    <!-- 1. B2B HERO SECTION COM AS CORES OFICIAIS (#314158) E 3D SLICES DO PRESTADOR -->
-    <section class="relative pt-28 sm:pt-36 pb-16 sm:pb-24 overflow-hidden bg-gradient-to-b from-[#314158] via-[#314158] to-[#253346] text-white">
+    <!-- 1. B2B HERO SECTION COM AS CORES OFICIAIS (#314158) E IMG APP VRUM PARTNER SEM FUNDO.png -->
+    <section class="relative pt-28 sm:pt-36 pb-20 sm:pb-28 overflow-hidden bg-gradient-to-b from-[#314158] via-[#314158] to-[#253346] text-white">
       
       <div class="watermark-v"></div>
 
       <!-- Ambient Glow Suave Prestador -->
       <div class="absolute inset-0 pointer-events-none opacity-35">
-        <div class="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[650px] h-[650px] bg-blue-400/20 rounded-full blur-[140px] animate-glow-pulse"></div>
+        <div class="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[750px] h-[750px] bg-blue-400/20 rounded-full blur-[150px] animate-glow-pulse"></div>
       </div>
 
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-          
-          <!-- Coluna de Texto Hero B2B -->
-          <div class="lg:col-span-6 space-y-6 sm:space-y-7 text-center lg:text-left">
-            
-            <span class="text-xs font-extrabold uppercase tracking-widest text-blue-200 block mb-2">
-              CENTRAL OPERACIONAL DE OFICINAS
-            </span>
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+        
+        <!-- 1. Texto do Hero B2B -->
+        <div class="max-w-3xl mx-auto space-y-4 sm:space-y-6">
+          <span class="text-xs font-extrabold uppercase tracking-widest text-blue-200 block">
+            CENTRAL OPERACIONAL DE OFICINAS
+          </span>
 
-            <!-- H1 Oficial B2B com Logo VRUM Embutido -->
-            <h1 class="font-display font-black text-4xl sm:text-6xl lg:text-7xl leading-[1.06] tracking-tight text-white drop-shadow-md">
-              Dê um 
-              <img 
-                src="VRUM LOGO LETRA.png" 
-                alt="VRUM" 
-                class="inline-block h-8 sm:h-12 lg:h-14 w-auto -mt-2 mx-1 object-contain drop-shadow-md"
-              > 
-              no seu negócio.
-            </h1>
+          <h1 class="font-display font-black text-4xl sm:text-6xl lg:text-7xl leading-[1.06] tracking-tight text-white drop-shadow-md">
+            Dê um 
+            <img 
+              src="VRUM LOGO LETRA.png" 
+              alt="VRUM" 
+              class="inline-block h-8 sm:h-12 lg:h-14 w-auto -mt-2 mx-1 object-contain drop-shadow-md"
+            > 
+            no seu negócio.
+          </h1>
 
-            <!-- Subtítulo Oficial B2B -->
-            <p class="text-lg sm:text-2xl text-slate-200 font-normal leading-relaxed max-w-xl mx-auto lg:mx-0">
-              Sua central de operações. Gerencie agendamentos, receba novos chamados e construa a reputação da sua oficina em um único lugar.
-            </p>
-
-            <!-- Ações: Quero ser Parceiro -->
-            <div class="pt-2 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
-              <a 
-                href="#cadastro-prestador" 
-                class="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 rounded-full bg-white text-[#314158] hover:bg-slate-100 font-black text-base tracking-wide transition-all duration-300 shadow-[0_15px_35px_rgba(0,0,0,0.25)] hover:-translate-y-1 hover:shadow-[0_20px_45px_rgba(0,0,0,0.35)]"
-              >
-                <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9v-2h2v2zm0-4H9V7h2v5z"/></svg>
-                <span>Quero ser Parceiro</span>
-              </a>
-
-              <a 
-                href="#b2b-features" 
-                class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-4 rounded-full bg-white/10 hover:bg-white/20 border border-white/25 text-white font-bold text-sm backdrop-blur-md transition-all duration-200"
-              >
-                <span>Conhecer Recursos</span>
-                <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
-              </a>
-            </div>
-
-            <!-- Micro-provas B2B -->
-            <div class="pt-2 flex flex-wrap items-center justify-center lg:justify-start gap-5 text-xs text-slate-200 font-medium">
-              <span class="flex items-center gap-1.5">
-                <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
-                Sem Taxa de Adesão
-              </span>
-              <span class="flex items-center gap-1.5">
-                <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
-                Ativação em até 24h
-              </span>
-              <span class="flex items-center gap-1.5">
-                <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
-                Motoristas Qualificados
-              </span>
-            </div>
-
-          </div>
-
-          <!-- Coluna Visual B2B Hero: Mockup 3D do Prestador (vrum_slices azum.png) -->
-          <div class="lg:col-span-6 flex justify-center items-center relative mt-6 lg:mt-0">
-            <div class="relative w-full max-w-[480px] sm:max-w-[560px] lg:max-w-none flex justify-center">
-              <div class="absolute inset-0 bg-blue-300/20 rounded-full blur-3xl transform scale-90 pointer-events-none"></div>
-
-              <img 
-                src="vrum_slices azum.png" 
-                alt="Central de Operações VRUM Prestadores" 
-                class="relative z-10 max-h-[380px] sm:max-h-[520px] lg:max-h-[640px] w-auto object-contain rounded-3xl sm:rounded-[2.5rem] shadow-[0_25px_50px_rgba(0,0,0,0.35)] animate-float-slow transition-transform duration-500 hover:scale-[1.02]"
-              >
-            </div>
-          </div>
-
+          <p class="text-lg sm:text-2xl text-slate-200 font-normal leading-relaxed max-w-2xl mx-auto">
+            Sua central de operações. Gerencie agendamentos, receba novos chamados e construa a reputação da sua oficina em um único lugar.
+          </p>
         </div>
+
+        <!-- 2. Imagem Mockup 3D Abaixo do Texto (IMG APP VRUM PARTNER SEM FUNDO.png) -->
+        <div class="flex justify-center items-center relative my-8 sm:my-10">
+          <div class="relative w-full max-w-[360px] sm:max-w-[480px] lg:max-w-[560px] flex justify-center">
+            <!-- Glow Suave Azul atrás do Mockup -->
+            <div class="absolute inset-0 bg-blue-400/25 rounded-full blur-3xl transform scale-90 pointer-events-none animate-pulse"></div>
+
+            <img 
+              src="IMG APP VRUM PARTNER SEM FUNDO.png" 
+              alt="Central de Operações VRUM Parceiros" 
+              class="relative z-10 max-h-[380px] sm:max-h-[500px] lg:max-h-[580px] w-auto object-contain animate-float-slow drop-shadow-[0_25px_50px_rgba(0,0,0,0.4)] transition-transform duration-500 hover:scale-[1.02]"
+            >
+          </div>
+        </div>
+
+        <!-- 3. Botões e Micro-provas Embaixo da Imagem -->
+        <div class="max-w-xl mx-auto space-y-6">
+          <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <a 
+              href="#cadastro-prestador" 
+              class="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 rounded-full bg-white text-[#314158] hover:bg-slate-100 font-black text-base tracking-wide transition-all duration-300 shadow-[0_15px_35px_rgba(0,0,0,0.25)] hover:-translate-y-1 hover:shadow-[0_20px_45px_rgba(0,0,0,0.35)]"
+            >
+              <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9v-2h2v2zm0-4H9V7h2v5z"/></svg>
+              <span>Quero ser Parceiro</span>
+            </a>
+
+            <a 
+              href="#b2b-features" 
+              class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-4 rounded-full bg-white/10 hover:bg-white/20 border border-white/25 text-white font-bold text-sm backdrop-blur-md transition-all duration-200"
+            >
+              <span>Conhecer Recursos</span>
+              <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
+            </a>
+          </div>
+
+          <!-- Micro-provas B2B -->
+          <div class="flex flex-wrap items-center justify-center gap-4 sm:gap-6 text-xs text-slate-200 font-medium">
+            <span class="flex items-center gap-1.5">
+              <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+              Sem Taxa de Adesão
+            </span>
+            <span class="flex items-center gap-1.5">
+              <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+              Ativação em até 24h
+            </span>
+            <span class="flex items-center gap-1.5">
+              <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+              Motoristas Qualificados
+            </span>
+          </div>
+        </div>
+
       </div>
     </section>
 
@@ -1078,14 +1088,14 @@
         <div id="card-joao" class="bg-white/[0.04] border border-white/10 rounded-3xl p-8 sm:p-10 backdrop-blur-xl flex flex-col justify-between hover:border-red-500/40 transition-all duration-300 group hover:-translate-y-1 shadow-2xl">
           <div class="space-y-6">
             
-            <!-- Imagem e Badges de Pista -->
-            <div class="relative h-60 sm:h-72 rounded-2xl overflow-hidden shadow-2xl border border-white/10">
+            <!-- Imagem e Badges de Pista (Foto Oficial João Biaggi) -->
+            <div class="relative h-64 sm:h-80 rounded-2xl overflow-hidden shadow-2xl border border-white/10">
               <img 
-                src="assets/founder-track.jpg" 
+                src="SnapInsta.to_535511370_18416700223105088_4237832861948274844_n.jpg" 
                 alt="João Biaggi - Piloto ProMod de Arrancada" 
                 class="w-full h-full object-cover object-top group-hover:scale-105 transition duration-700"
               >
-              <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent"></div>
+              <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/25 to-transparent"></div>
               
               <div class="absolute top-4 left-4">
                 <span id="badge-joao" class="text-xs font-black uppercase tracking-wider text-white flex items-center gap-1.5 drop-shadow-md transition-all duration-300">
@@ -1127,30 +1137,24 @@
         <div id="card-everton" class="bg-white/[0.04] border border-white/10 rounded-3xl p-8 sm:p-10 backdrop-blur-xl flex flex-col justify-between hover:border-red-500/40 transition-all duration-300 group hover:-translate-y-1 shadow-2xl">
           <div class="space-y-6">
             
-            <!-- Imagem e Badges TPS101 -->
-            <div class="relative h-60 sm:h-72 rounded-2xl overflow-hidden shadow-2xl border border-white/10 bg-gradient-to-br from-slate-900 to-black flex items-center justify-center p-6 text-center">
+            <!-- Imagem e Badges TPS101 (Foto Oficial Everton Guedes) -->
+            <div class="relative h-64 sm:h-80 rounded-2xl overflow-hidden shadow-2xl border border-white/10">
               <img 
-                src="assets/hero-shop.jpg" 
+                src="SnapInsta.to_731495828_18323555140279084_4984488627955974445_n.jpg" 
                 alt="Everton Guedes TPS101" 
-                class="absolute inset-0 w-full h-full object-cover opacity-30 filter blur-[1px] group-hover:scale-105 transition duration-700"
+                class="w-full h-full object-cover object-top group-hover:scale-105 transition duration-700"
               >
-              <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent"></div>
+              <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/25 to-transparent"></div>
               
-              <div class="relative z-10 space-y-3">
-                <span id="badge-everton" class="text-xs font-black uppercase tracking-widest text-[#FF6274] transition-all duration-300 block">
-                  🔥 TPS101 • THE PLATZ SERIES
+              <div class="absolute top-4 left-4">
+                <span id="badge-everton" class="text-xs font-black uppercase tracking-widest text-[#FF6274] transition-all duration-300 flex items-center gap-1.5 drop-shadow-md">
+                  <span>🔥</span> TPS101 • THE PLATZ SERIES
                 </span>
-                <div class="font-display font-black text-4xl sm:text-5xl lg:text-6xl text-white tracking-tight drop-shadow-md">
-                  +4 MILHÕES
-                </div>
-                <p class="text-xs sm:text-sm text-slate-300 max-w-xs mx-auto font-medium">
-                  de entusiastas e proprietários automotivos conectados nas redes sociais
-                </p>
               </div>
 
               <div class="absolute bottom-4 left-4 right-4 flex items-center justify-between text-xs">
                 <span class="font-mono text-white font-bold bg-black/60 px-3 py-1 rounded-md backdrop-blur-sm border border-white/15">
-                  YouTube • Instagram • TikTok
+                  +4 MILHÕES DE SEGUIDORES
                 </span>
                 <span class="text-emerald-400 font-bold flex items-center gap-1">
                   ✓ Canal Verificado
@@ -1192,15 +1196,6 @@
   <section id="download-area" class="py-20 sm:py-28 bg-[#070A12] text-white border-t border-white/10 relative overflow-hidden transition-all duration-500">
     <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-8 relative z-10">
       
-      <!-- Logo Oficial VRUM em Destaque -->
-      <div class="flex justify-center">
-        <img 
-          src="VRUM LOGO LETRA.png" 
-          alt="VRUM App" 
-          class="h-10 sm:h-14 w-auto object-contain opacity-95"
-        >
-      </div>
-
       <div class="space-y-3">
         <h2 class="font-display font-black text-3xl sm:text-5xl lg:text-6xl tracking-tight text-white leading-tight">
           Pronto para dar um 
@@ -1538,6 +1533,35 @@
         header.classList.add('bg-black/40', 'py-3', 'sm:py-4');
       }
     });
+
+    // Animação suave dos Cards da Regra de Ouro conforme o scroll
+    const initCardAnimations = () => {
+      const cards = document.querySelectorAll('.scroll-reveal-card');
+      if (!cards.length) return;
+
+      if ('IntersectionObserver' in window) {
+        const cardObserver = new IntersectionObserver((entries, observer) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('revealed');
+              observer.unobserve(entry.target);
+            }
+          });
+        }, {
+          threshold: 0.15,
+          rootMargin: '0px 0px -40px 0px'
+        });
+
+        cards.forEach((card, index) => {
+          card.style.transitionDelay = `${(index % 4) * 120}ms`;
+          cardObserver.observe(card);
+        });
+      } else {
+        cards.forEach(card => card.classList.add('revealed'));
+      }
+    };
+
+    window.addEventListener('DOMContentLoaded', initCardAnimations);
   </script>
 
 </body>
